@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oya Uysal - Türk Dili ve Edebiyatı Uzmanı</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdff 100%);
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #17a2b8 0%, #20c997 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(23, 162, 184, 0.3);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            object-fit: cover;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 15px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #17a2b8;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav a:hover {
+            background: #17a2b8;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            color: #17a2b8;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, #17a2b8, #20c997);
+            display: block;
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(23, 162, 184, 0.1);
+            border-left: 5px solid #17a2b8;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(23, 162, 184, 0.2);
+        }
+
+        .card h3 {
+            color: #17a2b8;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card .meta {
+            color: #6c757d;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #17a2b8, #20c997);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .skill-category h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 5px 0;
+            opacity: 0.9;
+        }
+
+        /* Publications */
+        .publication {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border-left: 4px solid #20c997;
+        }
+
+        .publication h4 {
+            color: #17a2b8;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .publication .journal {
+            color: #6c757d;
+            font-style: italic;
+            margin: 10px 0;
+        }
+
+        /* Projects */
+        .project {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid #20c997;
+        }
+
+        .project h4 {
+            color: #17a2b8;
+            margin-bottom: 10px;
+        }
+
+        .project .role {
+            background: #e3f2fd;
+            color: #17a2b8;
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.9rem;
+            margin: 10px 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #17a2b8, #20c997);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 80px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+            
+            .nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .section {
+                padding: 40px 0;
+            }
+            
+            .card {
+                padding: 25px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .card:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <img src="oya.jpg" alt="Oya Uysal" class="profile-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iNzUiIGN5PSI3NSIgcj0iNzUiIGZpbGw9IiNmOGY5ZmEiLz48Y2lyY2xlIGN4PSI3NSIgY3k9IjYwIiByPSIyNSIgZmlsbD0iIzE3YTJiOCIvPjxwYXRoIGQ9Ik00NSAxMjBjMC0xNiAxMy0zMCAzMC0zMHMzMCAxNCAzMCAzMEg0NXoiIGZpbGw9IiMxN2EyYjgiLz48L3N2Zz4='" />
+            <h1>Oya UYSAL</h1>
+            <p>Türk Dili ve Edebiyatı Uzmanı & Eğitim Araştırmacısı</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📍</span> Ankara, Türkiye
+                </div>
+                <div class="contact-item">
+                    <span>✉️</span> oyauysal80@hotmail.com
+                </div>
+                <div class="contact-item">
+                    <span>📱</span> +90 00000000000000
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="#hakkimda">Hakkımda</a></li>
+                <li><a href="#egitim">Eğitim</a></li>
+                <li><a href="#deneyim">Deneyim</a></li>
+                <li><a href="#yayinlar">Yayınlar</a></li>
+                <li><a href="#projeler">Projeler</a></li>
+                <li><a href="#yetenekler">Yetenekler</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="hakkimda" class="section">
+            <div class="container">
+                <h2>Hakkımda</h2>
+                <div class="card">
+                    <p>Türk Dili ve Edebiyatı alanında uzmanlaşmış, disiplinlerarası yaklaşımlarla eğitim materyali geliştirme konusunda deneyimli bir eğitimciim. Gazi Üniversitesi'nde doktora eğitimimi sürdürürken, Millî Eğitim Bakanlığı'nda öğretmen ve eğitim uzmanı olarak görev yapmaktayım.</p>
+                    <p style="margin-top: 15px;">Araştırma alanlarım arasında Türkçe öğretim yöntemleri, dil becerileri, yabancılara Türkçe öğretimi, disiplinlerarası yaklaşım ve öğretim materyali geliştirme yer almaktadır.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="egitim" class="section">
+            <div class="container">
+                <h2>Eğitim</h2>
+                <div class="card">
+                    <h3>Doktora (PhD)</h3>
+                    <div class="meta">2017 – 2025 • Gazi Üniversitesi</div>
+                    <p><strong>Alan:</strong> Türk Dili ve Edebiyatı Eğitimi</p>
+                    <p><strong>Tez:</strong> Türk Dili ve Edebiyatı Öğretiminde Disiplinlerarası Yaklaşımla Materyal Geliştirme: Divan Şiiri Örneği</p>
+                </div>
+
+                <div class="card">
+                    <h3>Yüksek Lisans (MA)</h3>
+                    <div class="meta">2011 – 2014 • Gazi Üniversitesi</div>
+                    <p><strong>Alan:</strong> Türk Dili ve Edebiyatı Eğitimi</p>
+                    <p><strong>Tez:</strong> Lise Türk Edebiyatı Ders Kitaplarının Temel Beceriler Açısından İncelenmesi</p>
+                </div>
+
+                <div class="card">
+                    <h3>Lisans (BA)</h3>
+                    <div class="meta">1998 – 2003 • Balıkesir Üniversitesi</div>
+                    <p><strong>Alan:</strong> Türk Dili ve Edebiyatı Öğretmenliği</p>
+                    <p><strong>Fakülte:</strong> Necatibey Eğitim Fakültesi</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="deneyim" class="section">
+            <div class="container">
+                <h2>Deneyim</h2>
+                <div class="card">
+                    <h3>Türk Dili ve Edebiyatı Öğretmeni</h3>
+                    <div class="meta">Millî Eğitim Bakanlığı • Ankara</div>
+                    <ul style="margin-top: 15px;">
+                        <li>• Lise düzeyinde Türk Dili ve Edebiyatı dersleri verdim</li>
+                        <li>• Ulusal müfredatı uyguladım ve geliştirdim</li>
+                        <li>• Sosyal, kültürel ve bilimsel projeler hazırladım ve yönettim</li>
+                        <li>• Bilim fuarı etkinlikleri ve öğrenci seminerlerine organizasyon yaptım</li>
+                        <li>• Öğrenci rehberliği ve kütüphane faaliyetleri yürüttüm</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Eğitim Uzmanı</h3>
+                    <div class="meta">Uluslararası ve Yükseköğretim Genel Müdürlüğü • Ankara</div>
+                    <ul style="margin-top: 15px;">
+                        <li>• Online Türk Dili ve Kültürü derslerini yürüttüm</li>
+                        <li>• Türk dili ve kültürü öğretimi için ders kitapları ve materyaller geliştirdim</li>
+                        <li>• Ulusal ve uluslararası seminer ve çalıştaylara katıldım</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="yayinlar" class="section">
+            <div class="container">
+                <h2>Yayınlar ve Sunumlar</h2>
+                
+                <div class="publication">
+                    <h4>Türk Dili ve Edebiyatı Eğitimi Alanında Yapılandırmacı ve Disiplinlerarası Öğretim Yaklaşımlarına Dayalı Materyal Geliştirme</h4>
+                    <p><strong>Yazarlar:</strong> UYSAL, O. & AYDEMİR, Y.</p>
+                    <div class="journal">Akademik Sosyal Araştırmalar Dergisi, 11(71), ss. 416-440</div>
+                    <p><strong>DOI:</strong> 10.29228/SOBIDER.77302</p>
+                    <div class="meta">2024</div>
+                </div>
+
+                <div class="publication">
+                    <h4>Yapılandırmacı Öğretim Yaklaşımına Dayalı Bir Türk Dili ve Edebiyatı Ders Uygulaması: Tanzimatmahal'de Bir Yolculuk</h4>
+                    <p><strong>Etkinlik:</strong> 8. Uluslararası Eğitim Yönetimi Forumu (EYFOR)</p>
+                    <div class="journal">TOBB ETÜ, Ankara</div>
+                    <div class="meta">2017</div>
+                </div>
+
+                <div class="publication">
+                    <h4>Kitap Bölümü Yazarlığı</h4>
+                    <p>Millî Eğitim Bakanlığı için Türk Dili ve Kültürü dersleri ders kitabı ortak yazarlığı</p>
+                    <div class="meta">Devam ediyor</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projeler" class="section">
+            <div class="container">
+                <h2>Projeler</h2>
+                
+                <div class="project">
+                    <h4>Anadolu Mektebi</h4>
+                    <div class="role">Proje Koordinatörü</div>
+                    <div class="meta">2024 – 2025</div>
+                </div>
+
+                <div class="project">
+                    <h4>Bilge Yazarlar</h4>
+                    <div class="role">Proje Koordinatörü</div>
+                    <div class="meta">2024 – 2025</div>
+                </div>
+
+                <div class="project">
+                    <h4>Türk Dili ve Edebiyatı'nda Yapılandırmacı Bir Ders: Tanzimatmahal'de Bir Yolculuk</h4>
+                    <div class="role">Araştırmacı</div>
+                    <p>Yenimahalle İlçe Millî Eğitim Müdürlüğü Bilim Fuarı Projesi</p>
+                    <div class="meta">2023 – 2024</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="yetenekler" class="section">
+            <div class="container">
+                <h2>Yetenekler ve İlgi Alanları</h2>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Araştırma Alanları</h4>
+                        <ul>
+                            <li>Türkçe öğretim yöntemleri</li>
+                            <li>Dil becerileri geliştirme</li>
+                            <li>Yabancılara Türkçe öğretimi</li>
+                            <li>Disiplinlerarası yaklaşım</li>
+                            <li>Materyal geliştirme</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Teknik Beceriler</h4>
+                        <ul>
+                            <li>MS Office Paketi</li>
+                            <li>Eğitim teknolojileri</li>
+                            <li>Materyal geliştirme yazılımları</li>
+                            <li>Online öğretim platformları</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Dil Becerileri</h4>
+                        <ul>
+                            <li>Türkçe (Anadil)</li>
+                            <li>İngilizce</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Özel İlgi Alanları</h4>
+                        <ul>
+                            <li>Ekoeleştiri</li>
+                            <li>Değerler eğitimi</li>
+                            <li>Dilbilim</li>
+                            <li>İnovatif eğitim teknolojileri</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top: 50px;">
+                    <h3>Ödüller ve Onur Belgeleri</h3>
+                    <ul>
+                        <li>• Yenimahalle Kaymakamlığı Üstün Başarı Belgesi</li>
+                        <li>• Millî Eğitim Bakanlığı Başarı Belgesi (2 adet)</li>
+                        <li>• 2011 "En İyiler" Yarışması Onur Belgesi, Keçiören Gazetesi</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Oya Uysal. Tüm hakları saklıdır.</p>
+            <p style="margin-top: 10px;">Türk Dili ve Edebiyatı Uzmanı | Eğitim Araştırmacısı</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active navigation highlighting
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('.section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
